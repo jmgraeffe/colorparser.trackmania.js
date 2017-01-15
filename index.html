@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<title>JS Trackmania Color Parser Demo</title>
+
+<!-- UTF-8 charset, recommended for special chars in TM nicknames etc. -->
+<meta charset="utf-8" />
+
+<!-- Booooooootstrap -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Bootstrap's optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+</head>
+
+<body>
+<div class="container">
+  <div class="row">
+    <h1>Trackmania Color Parser <small>in Javascript</small></h1>
+    
+    <p><strong>Trackmania Color Parser</strong> in Javascript is a port of <a href="http://www.tm-forum.com/viewtopic.php?t=14924" target="_blank">the original TMFColorParser written in PHP by fuckfish</a>, a programmer who contributed a lot of stuff to the Trackmania community in general.</p>
+    <p>It converts (or translates) strings including Trackmania codes <a href="http://trackmaniaz.page.tl/Colored-Text.htm" target="_blank">like this ones</a> into valid HTML code, so stylized phrases from Trackmania can be displayed on websites. This could be very useful for web statistics, for example.</p>
+    <p><strong>Why I've made a JS port?</strong> I developed in several web projects with Trackmania, working with Trackmania content directly (web statistics for events, user profiles imported into own user databases etc.) and I always struggled with the fact that every conversion from text with TM codes into HTML were made server-side. If we've so modern computers, why we can't do that on the client side?</p>
+    <p>The library is nearly equivalent to the PHP version, even the code is nearly the same, just converted to JS. That's why you can use the known functions, just in JS. But I haven't implemented everything from the old PHP library. If you want more features, just ask me or modify the code by yourself and then make a pull request on Github. Thanks!</p>
+  </div>
+  
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="panel panel-success">
+        <div class="panel-heading">
+          Examples (wait 5 seconds, real JS :D)
+        </div>
+        <div class="panel-body">
+          <p><strong>Automatic shadowing:</strong></p>
+          <p class="tm-code">$7d0H$fffunt$7d0M$fffania$7d0¬$fffJonni$i$07D</p>
+          
+          <p><strong>Comparison without shadowing:</strong></p>
+          <p id="tm-code-noshadow">$7d0H$fffunt$7d0M$fffania$7d0¬$fffJonni$i$07D</p>
+          
+          <p><strong>Link & manialink parsing:</strong></p>
+          <p class="tm-code">$l[http://huntmania.net]HuntMania.net$l$i - the Trackmania event forge!</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="panel panel-success">
+        <div class="panel-heading">
+          Try it on your own
+        </div>
+        <div class="panel-body">
+          <div class="form-group">
+            <input type="text" class="form-control" id="demoInput" placeholder="Type in some text with TM codes" onchange="updateDemo()">
+          </div>
+          <div class="well" id="demoBox">
+            ...
+          </div>
+          <span id="helpBlock" class="help-block">The text updates only if you click somewhere else on the page, to unfocus the input field.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="trackmania-colorparser.js"></script>
+<script type="text/javascript">
+/* DEMO JAVASCRIPTS */
+
+// set shadowing (default: false)
+COLORPARSER.setShadowing(true);
+
+// set the game (for manialinks especially; default: 'TMF'; possible: 'TMF', 'TM2' = 'MP')
+COLORPARSER.setGame('MP');
+
+function updateDemo() {
+
+  document.getElementById('demoBox').innerHTML = COLORPARSER.toHTML(document.getElementById('demoInput').value);
+
+}
+
+setTimeout(function () {
+
+  // convert all
+  var elements = document.querySelectorAll('.tm-code');
+  Array.prototype.forEach.call(elements, function(el, i){
+
+    el.innerHTML = COLORPARSER.toHTML(el.innerHTML);
+
+  });
+
+  // no shadow example
+  COLORPARSER.setShadowing(false);
+  document.getElementById('tm-code-noshadow').innerHTML = COLORPARSER.toHTML(document.getElementById('tm-code-noshadow').innerHTML);
+  COLORPARSER.setShadowing(true);
+  
+}, 5000);
+</script>
+</body>
+
+</html>
