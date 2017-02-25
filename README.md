@@ -4,7 +4,7 @@ Trackmania Color Parser in Javascript is a port of [the original TMFColorParser]
 It converts (or translates) strings including Trackmania codes [like this ones](http://trackmaniaz.page.tl/Colored-Text.htm) into valid HTML code, so stylized phrases from Trackmania can be displayed on websites. This could be very useful for web statistics, for example.
 
 ##Demo
-Because it's client-side only, you can just view [the index.html on github.io](https://j0nnib0y.github.io/trackmania-colorparser/).
+Because it's client-side only, you can just view [the index.html on github.io](https://j0nnib0y.github.io/colorparser.trackmania.js/).
 
 ##Features
 - client-side parsing 
