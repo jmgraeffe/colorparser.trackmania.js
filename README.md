@@ -3,16 +3,16 @@ Trackmania Color Parser in Javascript is a port of [the original TMFColorParser]
 
 It converts (or translates) strings including Trackmania codes [like this ones](http://trackmaniaz.page.tl/Colored-Text.htm) into valid HTML code, so stylized phrases from Trackmania can be displayed on websites. This could be very useful for web statistics, for example.
 
-##Demo
+## Demo
 Because it's client-side only, you can just view [the index.html on github.io](https://j0nnib0y.github.io/colorparser.trackmania.js/).
 
-##Features
+## Features
 - client-side parsing 
 - supports all Trackmania formatting codes
 - converts links and manialinks
 - automatic shadowing
 
-##Usage
+## Usage
 At first you've to implement the script into your web site. Just upload the Javascript files and add the following line right before the body closing tag:
 
     <script src="trackmania-colorparser.js"></script>
@@ -35,7 +35,7 @@ Parameters:
 	Parameters:
 	- `string game = 'TMF'` (`'TMF', 'MP', 'TM2'`)
 
-##Contributing
+## Contributing
 If you've any ideas or wishes, e. g. implementing functions from the original version which are missing in my version, just feel free to ask or just code it by yourself and make a pull request here. Thanks! ;-)
 
 **Things which could be implemented sometime:**
@@ -44,7 +44,7 @@ If you've any ideas or wishes, e. g. implementing functions from the original ve
 - HTML to Trackmania styled text
 - ...
 
-##Thanks to
+## Thanks to
 - F*ckfish, for the awesome PHP library
 - Stackoverflow as always
 - w3schools.com
